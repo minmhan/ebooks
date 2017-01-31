@@ -64,9 +64,11 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'ebooks.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy.pipelines.files.FilesPipeline': 1,
+    'scrapy.pipelines.images.ImagesPipeline': 2,
+    'ebooks.pipelines.MongoPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +90,8 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+MONGO_URI = "mongodb://localhost:27017"
+MONGO_DATABASE = "ebooks"
+FILES_STORE = '/Users/minmhan/pythons/ebooks/downloads/files'
+IMAGES_STORE = '/Users/minmhan/pythons/ebooks/downloads/images'
